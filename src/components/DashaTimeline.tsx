@@ -80,7 +80,7 @@ export default function DashaTimeline({ dashas }: DashaTimelineProps) {
                         : "bg-[#241733] text-[#d8a53d] border border-[#d8a53d]/10"
                     }`}
                   >
-                    {dasha.planet.substring(0, 2).toUpperCase()}
+                    {(dasha.planet || "").substring(0, 2).toUpperCase()}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
