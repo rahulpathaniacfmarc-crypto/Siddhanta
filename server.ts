@@ -124,7 +124,7 @@ Timezone: ${timezone || "Auto-detect based on POB"}
 Perform the exact astronomical math based on Lahiri Ayanamsha for calculating Lagna, planets, nakshatras, degrees, Yogas, Dashas, Shadbala, Ashtakavarga, and divisional charts. Return strictly valid JSON conforming to the requested schema.`;
 
     const apiResponse = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${activeKey}`,
+`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${activeKey}`,
       {
         method: "POST",
         headers: {
