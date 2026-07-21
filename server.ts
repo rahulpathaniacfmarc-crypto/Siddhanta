@@ -14,6 +14,30 @@ function getGeminiApiKey(): string {
   return process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || process.env.API_KEY || "";
 }
 
+// Planet schema helper
+const planetSchema = {
+  type: "OBJECT",
+  properties: {
+    sign: { type: "STRING" },
+    signNumber: { type: "INTEGER" },
+    degree: { type: "NUMBER" },
+    house: { type: "INTEGER" },
+    nakshatra: { type: "STRING" },
+    isRetrograde: { type: "BOOLEAN" }
+  },
+  required: ["sign", "signNumber", "degree", "house", "nakshatra"]
+};
+
+// Divisional Chart schema helper
+const chartDetailsSchema = {
+  type: "OBJECT",
+  properties: {
+    name: { type: "STRING" },
+    description: { type: "STRING" },
+    ascendant: { type: "STRING" }
+  }
+};
+
 // Vedic Astrology JSON schema definition for calculation
 const kundliSchema = {
   type: "OBJECT",
@@ -45,19 +69,27 @@ const kundliSchema = {
     planets: {
       type: "OBJECT",
       properties: {
-        Sun: { type: "OBJECT" },
-        Moon: { type: "OBJECT" },
-        Mars: { type: "OBJECT" },
-        Mercury: { type: "OBJECT" },
-        Jupiter: { type: "OBJECT" },
-        Venus: { type: "OBJECT" },
-        Saturn: { type: "OBJECT" },
-        Rahu: { type: "OBJECT" },
-        Ketu: { type: "OBJECT" },
+        Sun: planetSchema,
+        Moon: planetSchema,
+        Mars: planetSchema,
+        Mercury: planetSchema,
+        Jupiter: planetSchema,
+        Venus: planetSchema,
+        Saturn: planetSchema,
+        Rahu: planetSchema,
+        Ketu: planetSchema,
       },
       required: ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"],
     },
-    divisionalCharts: { type: "OBJECT", required: ["D1", "D9", "D10"] },
+    divisionalCharts: {
+      type: "OBJECT",
+      properties: {
+        D1: chartDetailsSchema,
+        D9: chartDetailsSchema,
+        D10: chartDetailsSchema,
+      },
+      required: ["D1", "D9", "D10"],
+    },
     yogas: { type: "ARRAY", items: { type: "OBJECT" } },
     doshas: { type: "ARRAY", items: { type: "OBJECT" } },
     vimshottariDasha: { type: "ARRAY", items: { type: "OBJECT" } },
