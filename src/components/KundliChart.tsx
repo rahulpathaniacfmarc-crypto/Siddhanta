@@ -35,12 +35,15 @@ export default function KundliChart({ chartData, title }: KundliChartProps) {
   // Iterate over each planet
   Object.entries(planets).forEach(([planetName, signNumber]) => {
     const house = ((signNumber - lagna + 12) % 12) + 1;
-    // Map standard names to traditional abbreviations
-    const shortName = planetName === "Jupiter" ? "Jup" :
-                      planetName === "Mercury" ? "Mer" :
-                      planetName === "Saturn" ? "Sat" :
-                      planetName === "Venus" ? "Ven" :
-                      planetName.substring(0, 3);
+    
+    // Map standard names to traditional abbreviations safely
+    const safeName = planetName || ""; 
+    const shortName = safeName === "Jupiter" ? "Jup" :
+                      safeName === "Mercury" ? "Mer" :
+                      safeName === "Saturn" ? "Sat" :
+                      safeName === "Venus" ? "Ven" :
+                      safeName.substring(0, 3);
+                      
     housePlanets[house].push(shortName);
   });
 
