@@ -49,7 +49,7 @@ export default function AshtakavargaTable({ ashtakavarga }: AshtakavargaTablePro
           </thead>
           <tbody>
             {planets.map((planet) => {
-              const scores = (ashtakavarga as any)[planet] || Array(12).fill(4);
+              const scores = (ashtakavarga as any)?.[planet] || Array(12).fill(4);
               return (
                 <tr key={planet} className="border-b border-[#d8a53d]/10 hover:bg-[#241733]/40 transition-colors text-slate-200">
                   <td className="p-3 font-semibold text-slate-200">{planet}</td>
@@ -74,7 +74,7 @@ export default function AshtakavargaTable({ ashtakavarga }: AshtakavargaTablePro
             {/* SAV Row */}
             <tr className="bg-[#241733]/40">
               <td className="p-3 font-bold text-[#d8a53d] tracking-wider uppercase text-[10px] font-display">SAV (Total)</td>
-              {ashtakavarga.Sarvashtakavarga.map((score: number, idx: number) => (
+              {(ashtakavarga?.Sarvashtakavarga || []).map((score: number, idx: number) => (
                 <td
                   key={idx}
                   className={`p-3 text-center font-mono font-bold border-t border-b ${getSAVColor(score)}`}
@@ -96,4 +96,3 @@ export default function AshtakavargaTable({ ashtakavarga }: AshtakavargaTablePro
     </div>
   );
 }
-
