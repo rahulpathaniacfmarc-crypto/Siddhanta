@@ -1,0 +1,6 @@
+{
+  "name": "Vedic Astrology Portal",
+  "description": "A comprehensive Vedic astrology and lifetime horoscope engine featuring detailed chart analysis, divisional charts, Vimshottari dasha, and expert astrological consultations according to classical texts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

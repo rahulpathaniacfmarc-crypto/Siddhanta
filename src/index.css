@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Yatra+One&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Cinzel", serif;
+  --font-traditional: "Yatra One", cursive;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom background animation and styling */
+body {
+  font-family: var(--font-sans);
+  background-color: #090514; /* Deep space black */
+  background-image: linear-gradient(to bottom, #090514 0%, #1a0b2e 100%);
+  color: #f1f5f9; /* Slate 100 text */
+}
+
+/* Custom scrollbars for a clean, mystical aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b0713;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(216, 165, 61, 0.3); /* Translucent Warm Gold */
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(216, 165, 61, 0.6); /* Marigold hover */
+}
+
+/* Custom focus styles for minimal elements */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #d8a53d !important;
+  box-shadow: 0 0 0 2px rgba(216, 165, 61, 0.2);
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse-slow {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 40s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse-slow 30s linear infinite;
+}
+
